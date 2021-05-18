@@ -66,9 +66,14 @@ class two_body:
 
         return np.array([self.dr_a_dt, self.dr_b_dt, self.dv_a_dt, self.dv_b_dt]).flatten()
 
-    def plot(self):
+    def two_body_sol(self):
         self.two_body_sol = odeint(
             self.two_body_ode, self.init_params, self.time_span, args=(self.G, self.m_a, self.m_b))
+
+        return self.two_body_sol
+
+    def plot(self):
+        self.two_body_sol = self.two_body_sol()
 
         self.r_a_sol = self.two_body_sol[:, :2]
         self.r_b_sol = self.two_body_sol[:, 2:4]
