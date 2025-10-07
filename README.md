@@ -72,50 +72,6 @@ sim.plot()
 | `three_body_3D.py`  | Chaotic 3D three-body dynamics visualization                                |
 
 
-Install the required libraries manually:
-
-pip install numpy scipy plotly
-
-
-or via a requirements file:
-
-pip install -r requirements.txt
-
-
-Core dependencies:
-
-NumPy
- — for numerical computation
-
-SciPy
- — for ODE integration (odeint)
-
-Plotly
- — for interactive 2D and 3D visualization
-
-🧑‍💻 Author
-
-Lalith Uriti
-Developer & Researcher in Computational Mechanics and Visualization
-
-📧 lalithuriti@gmail.com
-
-🌐 LinkedIn
- • GitHub
-
-📜 License
-
-Released under the MIT License
-.
-© 2025 Lalith Uriti — feel free to use, modify, and build upon this work.
-
-🌌 Acknowledgements
-
-This project was inspired by the elegance of classical mechanics and the goal of making orbital motion more accessible through visualization.
-Special thanks to the open-source Python community for providing the tools that made this project possible.
-Gratitude to Plotly, NumPy, and SciPy for enabling interactive and educational scientific computing experiences.
-
-
 ## 📘 Mathematical Formulation
 This project models the classical **two/three-body problem** under Newtonian gravity.
 
@@ -188,3 +144,15 @@ Small numerical drift in **E** or **L** indicates integration error/timestep iss
 - Numerical integration of coupled differential equations  
 - Orbital dynamics and system stability  
 - Interactive data visualization in scientific computing  
+
+## 🧑‍💻 Author
+**Lalith Uriti**  
+*Student at UNC Charlotte (UNCC) — Double major in Mechanical Engineering & Computer Science*  
+*Developer & Researcher in Computational Mechanics and Visualization*
+
+📧 [lalithuriti@gmail.com](mailto:lalithuriti@gmail.com)  
+🌐 [LinkedIn](https://linkedin.com/in/lalithuriti) • [GitHub](https://github.com/<your-username>)
+
+## 📜 License
+Released under the **[MIT License](LICENSE)**.  
+© 2025 **Lalith Uriti** 
