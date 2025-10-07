@@ -37,39 +37,96 @@ pip install numpy scipy plotly
 # Run the simulation
 python two_body_class.py
 
+## 📘 Mathematical Formulation
 
-📘 Mathematical Formulation
+This project models the classical **two-body problem** under Newtonian gravity.
 
-The motion of two bodies under mutual gravitation is governed by Newton’s Law of Universal Gravitation.
+---
 
-The force between two masses is given by:
+### 1) Force Law
 
-F = G · (m₁ · m₂) / r²
+The gravitational force between two point masses is:
 
-where:
+**F = G · (m₁ · m₂) / r²**
 
-F — gravitational force (N)
+**where:**
+- **F** — magnitude of the gravitational force (N)  
+- **G** — gravitational constant (6.674 × 10⁻¹¹ N·m²·kg⁻²)  
+- **m₁, m₂** — masses of the two bodies (kg)  
+- **r** — distance between their centers (m)
 
-G — gravitational constant (6.674 × 10⁻¹¹ N·m²·kg⁻²)
+---
 
-m₁, m₂ — masses of the two bodies (kg)
+### 2) Vector Form (Directions Included)
 
-r — distance between their centers (m)
+Let **r₁**, **r₂** be the position vectors (in m) of bodies 1 and 2, and **r₁₂ = r₂ − r₁**, **r₂₁ = −r₁₂**.  
+The accelerations follow directly from Newton’s second law:
 
-In vector form, the acceleration of each body is determined by:
+**a₁ = G · m₂ · (r₂ − r₁) / |r₂ − r₁|³**  
+**a₂ = G · m₁ · (r₁ − r₂) / |r₁ − r₂|³**
 
-a₁ = G · m₂ · (r₂ − r₁) / |r₂ − r₁|³
-a₂ = G · m₁ · (r₁ − r₂) / |r₁ − r₂|³
+---
 
-Combining these equations gives the coupled second-order differential system:
+### 3) Coupled Second-Order ODEs
 
-d²r₁/dt² = G · m₂ · (r₂ − r₁) / |r₂ − r₁|³
-d²r₂/dt² = G · m₁ · (r₁ − r₂) / |r₁ − r₂|³
+**d²r₁/dt² = G · m₂ · (r₂ − r₁) / |r₂ − r₁|³**  
+**d²r₂/dt² = G · m₁ · (r₁ − r₂) / |r₁ − r₂|³**
 
-In this project, these equations are numerically integrated over time using the
-scipy.integrate.odeint solver, which computes the position and velocity of each body
-at discrete time steps, enabling a complete simulation of their orbital evolution.
+These are integrated numerically in the code.
 
+---
+
+### 4) First-Order State-Space Form (what the solver uses)
+
+Define velocities **v₁ = dr₁/dt**, **v₂ = dr₂/dt**, and the state vector
+
+**y = [ r₁, r₂, v₁, v₂ ]**.
+
+Then:
+
+- **dr₁/dt = v₁**  
+- **dr₂/dt = v₂**  
+- **dv₁/dt = G · m₂ · (r₂ − r₁) / |r₂ − r₁|³**  
+- **dv₂/dt = G · m₁ · (r₁ − r₂) / |r₁ − r₂|³**
+
+This first-order system is passed to `scipy.integrate.odeint`.
+
+---
+
+### 5) Conserved Quantities (for checks)
+
+- **Total energy**  
+  **E = (1/2) m₁ |v₁|² + (1/2) m₂ |v₂|² − G m₁ m₂ / |r₁ − r₂|**
+- **Total angular momentum**  
+  **L = m₁ (r₁ × v₁) + m₂ (r₂ × v₂)**
+
+Small numerical drift in **E** or **L** indicates integration error/timestep issues.
+
+---
+
+### 6) Units & Constants
+
+- Positions **r** in **meters (m)**  
+- Velocities **v** in **meters per second (m/s)**  
+- Masses **m** in **kilograms (kg)**  
+- Gravitational constant **G = 6.674 × 10⁻¹¹ N·m²·kg⁻²**
+
+---
+
+### 7) Assumptions / Limitations
+
+- Point masses (no size/shape, no tidal forces).  
+- No relativistic effects (pure Newtonian mechanics).  
+- No third bodies or external perturbations.  
+- Fixed **G** and inertial reference frame.
+
+---
+
+### 8) Numerical Integration Notes
+
+- The equations above are stiff only in close encounters; smaller timesteps improve stability.  
+- The simulation uses **`odeint` (LSODA)**, which switches between non-stiff and stiff methods automatically.  
+- For long integrations or very eccentric orbits, consider symplectic methods for better energy conservation.
 
 
 🧩 Example Usage
