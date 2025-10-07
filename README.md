@@ -145,14 +145,6 @@ Small numerical drift in **E** or **L** indicates integration error/timestep iss
 - Orbital dynamics and system stability  
 - Interactive data visualization in scientific computing  
 
-## 🧑‍💻 Author
-**Lalith Uriti**  
-*Student at UNC Charlotte (UNCC) — Double major in Mechanical Engineering & Computer Science*  
-*Developer & Researcher in Computational Mechanics and Visualization*
-
-📧 [lalithuriti@gmail.com](mailto:lalithuriti@gmail.com)  
-🌐 [LinkedIn](https://linkedin.com/in/lalithuriti) • [GitHub](https://github.com/<your-username>)
-
 ## 📜 License
 Released under the **[MIT License](LICENSE)**.  
 © 2025 **Lalith Uriti** 
