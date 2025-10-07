@@ -4,6 +4,9 @@ from scipy.integrate import odeint
 import plotly.graph_objects as go
 from plotly.graph_objs import Scatter
 
+import plotly.io as pio
+pio.renderers.default = "browser"
+
 
 class two_body:
     def __init__(self, bodies, time_span, dt=404, G=None, xy=False, animate=True):

@@ -3,6 +3,9 @@ from scipy.integrate import odeint
 
 import plotly.graph_objects as go
 from plotly.graph_objs import Scatter
+import plotly.io as pio
+pio.renderers.default = "browser"
+
 
 '''
 import chart_studio
@@ -87,7 +90,7 @@ r_c_sol = two_body_sol[:, 4:6]
 
 v_a_sol = two_body_sol[:, 6:8]
 v_b_sol = two_body_sol[:, 8:10]
-v_b_sol = two_body_sol[:, 10:12]
+v_c_sol = two_body_sol[:, 10:12]
 
 
 r_a_x_sol = np.array(r_a_sol[:, :1])
@@ -225,8 +228,9 @@ three_body_plot_xy_animated_traj = go.Figure(data=[r_path, r_a_trace, r_b_trace,
                                              frames=three_body_plot_trace_frames, layout=three_body_plot_layout)
 
 '''
-py.plot(two_body_plot_xyz_animated_traj,
-           filename='two_body_plot_xyz_animated_traj', auto_open=True)
+py.plot(three_body_plot_xy_animated_traj,
+           filename='three_body_plot_xy_animated_traj', auto_open=True)
 '''
+
 
 three_body_plot_xy_animated_traj.show()

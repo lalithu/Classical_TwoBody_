@@ -3,6 +3,9 @@ from scipy.integrate import odeint
 
 import plotly.graph_objects as go
 from plotly.graph_objs import Scatter
+import plotly.io as pio
+pio.renderers.default = "browser"
+
 
 '''
 import chart_studio
@@ -83,7 +86,7 @@ r_c_sol = three_body_sol[:, 6:9]
 
 v_a_sol = three_body_sol[:, 9:12]
 v_b_sol = three_body_sol[:, 12:15]
-v_b_sol = three_body_sol[:, 15:18]
+v_c_sol = three_body_sol[:, 15:18]
 
 
 r_a_x_sol = np.array(r_a_sol[:, :1])

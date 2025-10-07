@@ -3,6 +3,8 @@ from scipy.integrate import odeint
 
 import plotly.graph_objects as go
 from plotly.graph_objs import Scatter
+import plotly.io as pio
+pio.renderers.default = "browser"
 
 '''
 import chart_studio
