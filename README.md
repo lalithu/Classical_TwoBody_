@@ -37,6 +37,8 @@ pip install numpy scipy plotly
 # Run the simulation
 python two_body_class.py
 
+```
+
 ## 📘 Mathematical Formulation
 
 This project models the classical **two-body problem** under Newtonian gravity.
